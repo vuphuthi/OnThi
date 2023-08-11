@@ -1,35 +1,27 @@
-import { createBrowserRouter } from "react-router-dom";
-import LayoutWebsite from "./components/Layouts/LayoutWebsite";
-import LayoutAdmin from "./components/Layouts/LayoutAdmin";
-import { Navigate } from "react-router-dom";
-import Dashboard from "./pages/admin/dashboard";
-import AdminProduct from "./pages/admin/product";
-import AdminProductAdd from "./pages/admin/product/add";
-import AdminProductEdit from "./pages/admin/product/edit";
-
+import { createBrowserRouter, Navigate} from "react-router-dom";
+import LayoutAdmin from "./components/LayoutAdmin";
+import AdminProduct from "./pages/list";
+import AdminProductAdd from "./pages/add";
+import AdminProductEdit from "./pages/edit";
+import Signup from "./pages/signup";
+import Signin from "./pages/signin";
 export const router = createBrowserRouter([
-    { path: "/", element: <LayoutWebsite /> },
     {
-        path: "/admin",
+        path: "/",
         element: <LayoutAdmin />,
         children: [
-            { index: true, element: <Navigate to="dashboard" /> },
             {
-                path: "dashboard",
-                element: <Dashboard />,
-            },
-            {
-                path: "product",
-                element: <AdminProduct />,
-            },
-            {
-                path: "product/add",
-                element: <AdminProductAdd />,
-            },
-            {
-                path: "product/:idProduct/edit",
-                element: <AdminProductEdit />,
+                children: [
+                    { index: true, element: <Navigate to="product" /> },
+                    { path: "product", element: <AdminProduct /> },
+                    { path: "/product/add", element: <AdminProductAdd /> },
+                    { path: "/product/:idProduct/edit", element: <AdminProductEdit /> },
+                ],
             },
         ],
     },
+    { path: "*", element: "Not Found Page" },
+    { path: "signup", element: <Signup /> },
+    { path: "signin", element: <Signin /> },
+
 ]);

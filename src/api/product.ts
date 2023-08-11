@@ -1,16 +1,11 @@
 import { IProduct } from '@/interfaces/product';
-import { pause } from '@/utils/pause';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const productApi = createApi({
-    reducerPath: 'product',
+    reducerPath: "product",
     tagTypes: ['Product'],
     baseQuery: fetchBaseQuery({
-        baseUrl: import.meta.env.VITE_API_URL,
-        fetchFn: async (...args) => {
-            await pause(1000);
-            return fetch(...args);
-        }
+        baseUrl: "http://localhost:3000",
     }),
     endpoints: (builder) => ({
         getProducts: builder.query<IProduct[], void>({
@@ -21,10 +16,10 @@ const productApi = createApi({
             query: (id) => `/products/${id}`,
             providesTags: ['Product']
         }),
-        removeProduct: builder.mutation<void, number>({
+        removeProduct: builder.mutation<void, number | string>({
             query: (id) => ({
                 url: `/products/${id}`,
-                method: "DELETE"
+                method: "DELETE",
             }),
             invalidatesTags: ['Product']
         }),
@@ -46,13 +41,11 @@ const productApi = createApi({
         })
     })
 });
-
 export const {
     useGetProductsQuery,
     useGetProductByIdQuery,
-    useRemoveProductMutation,
     useAddProductMutation,
-    useUpdateProductMutation
-} = productApi;
+    useUpdateProductMutation,
+    useRemoveProductMutation } = productApi;
 export const productReducer = productApi.reducer;
 export default productApi;

@@ -1,24 +1,28 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "product A",
-      "price": 100
-    },
-    {
-      "id": 2,
-      "name": "product B",
-      "price": 200
-    },
-    {
-      "name": "Sản phẩm C",
-      "price": "300",
-      "id": 3
-    },
-    {
-      "name": "Sản phẩm D update",
-      "price": "400",
+      "name": "Thii",
+      "price": "23",
       "id": 4
+    }
+  ],
+  "users": [
+    {
+      "id": 4
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$VRYB9HkvXyaAm4HmXWe5ZOIONRwOmSR.D.wuyPN/W.I59XYevbxY.",
+      "name": "Thi",
+      "confirmPassword": "222222",
+      "id": 5
+    },
+    {
+      "email": "thivpph24307@fpt.edu.vn",
+      "password": "$2a$10$0wzUv61wwqVW24tr0TU3YuAK/7.LS0fe2XOYeSGJhbZTePKw.RY.6",
+      "name": "VuPhuThi",
+      "confirmPassword": "232323",
+      "id": 6
     }
   ]
 }
